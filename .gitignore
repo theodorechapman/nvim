@@ -6,3 +6,12 @@ debug
 foo.*
 *.log
 data
+
+# --- macOS system files ---
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS folder metadata
+Icon?
+._*
