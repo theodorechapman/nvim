@@ -16,3 +16,14 @@ vim.keymap.set("n", "O", "O<Esc>")
 vim.opt.virtualedit = "onemore"
 vim.keymap.set('n', '$', '$l', { noremap = true, silent = true })
 vim.keymap.set('n', 'a', 'A', { noremap = true, silent = true })
+
+-- Prevent cursor from moving left when exiting insert mode
+vim.api.nvim_create_autocmd("InsertLeave", {
+  callback = function()
+    local col = vim.fn.col('.')
+    local line_len = vim.fn.col('$') - 1
+    if col < line_len then
+      vim.cmd('normal! l')
+    end
+  end
+})
